@@ -6,6 +6,10 @@ Real-time voice assistant (FRIDAY) on NVIDIA Jetson AGX Thor using [RealtimeVoic
 >
 > For the base Ollama + Open WebUI setup, see [thor-ai-setup](https://github.com/bujosa/thor-ai-setup).
 
+![FRIDAY Voice Chat](assets/friday-voice-chat.png)
+
+*FRIDAY running on Jetson Thor — real-time voice conversation about quantum computing. STT by Whisper base.en, LLM by Gemma 3 4B, TTS by Kokoro 82M (af_heart voice).*
+
 ## Stack
 
 ```
