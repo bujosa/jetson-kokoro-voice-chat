@@ -245,3 +245,4 @@ ssh thor 'bash -s' < scripts/status.sh
 
 - [thor-ai-setup](https://github.com/bujosa/thor-ai-setup) - Ollama + Open WebUI setup on Jetson Thor
 - [jetson-realtime-voice-chat](https://github.com/bujosa/jetson-realtime-voice-chat) - TTS engine research, Jetson ARM64 fixes, Orpheus benchmarks
+- [wednesday-voice-chat](https://github.com/bujosa/wednesday-voice-chat) - Custom React voice chat UI (alternative frontend)
