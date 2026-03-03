@@ -202,6 +202,28 @@ self.engine = KokoroEngine(
 
 Orpheus has better expressiveness but can't keep up with real-time streaming on Jetson. Kokoro runs inline without a separate server and stays within the real-time threshold.
 
+## Resource Usage
+
+Measured on Jetson AGX Thor (128 GB unified RAM). These are the actual RSS values from running processes.
+
+| Component | RAM | Processor | Notes |
+|-----------|-----|-----------|-------|
+| **FRIDAY server** (Kokoro + Whisper + PyTorch) | ~4.0 GB | CPU | Includes Kokoro 82M, Whisper base.en ~140M, PyTorch runtime |
+| **Ollama** (gemma3:4b loaded) | ~1.3 GB | GPU | 4.3 GB VRAM for model weights (unified memory) |
+| **Total pipeline** | **~5.3 GB** | CPU + GPU | Excludes OS and system services |
+
+**Disk usage:**
+
+| Item | Size |
+|------|------|
+| Python venv (PyTorch + all deps) | ~8 GB |
+| Kokoro model (downloaded on first run) | ~330 MB |
+| Whisper base.en model | ~140 MB |
+| Gemma 3 4B (Ollama) | ~3.3 GB |
+| **Total disk** | **~12 GB** |
+
+> Linux will also use available RAM for filesystem cache (buff/cache), which can make `free` show high usage. This cache is automatically released when processes need memory. Run `sync && echo 3 > /proc/sys/vm/drop_caches` to clear it.
+
 ## Management
 
 ```bash
